@@ -1,33 +1,32 @@
 import math
 import random
 import time
+firstLenghtTime = 0
+secondLenghtTime = 0
 
 def NthFibonacci(n):
   fiveSquare = math.sqrt(5)
-  return (1/fiveSquare)*(((1 + fiveSquare)/2)**n - ((1 - fiveSquare)/2)**n) #FIXME 
+  return round((1/fiveSquare)*(((1 + fiveSquare)/2)**n - ((1 - fiveSquare)/2)**n)) 
 
-loops = 10000001
-maxFibonacci = 40
-# applying formula - n from 0 to 40 - 1000 times
-start_time = time.time()
-for i in range(loops):
-  num = random.randrange(maxFibonacci + 1)
-  # print('using formula, what is the Fibonacci number of %d?'% num)
-  NthFibonacci(num)
-firstLenghtTime = time.time() - start_time 
+def FromFormula(num):
+  # start_time = time.time()
+  # for i in range(loopsNumber):
+    # num = random.randrange(maxFibonacciNumber + 1)
+    # NthFibonacci(num)
+  return NthFibonacci(num)
+  # firstLenghtTime = time.time() - start_time
+  # print("---it took %f seconds to execute the formula---" % (firstLenghtTime))
   
+# the first 40 Fibonacci numbers
+fibonacciResults = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986, 102334155]
   
+def FromCache(num):
+  # start_time = time.time()
+  return fibonacciResults[num]
+  # global result
+  # secondLenghtTime = time.time() - start_time
+  # result = [fibonacciResults[num], secondLenghtTime]
 
-fibonacciResults = []
-for i in range(maxFibonacci + 1):
-  fibonacciResults.append(round(NthFibonacci(i)))
-  
-# caching results - n from 0 to 40 - 1000 times  
-start_time = time.time()
-for i in range(loops):
-  num = random.randrange(maxFibonacci + 1)
-  # print('using cache, what is the Fibonacci number of %d?'% num)
-  fibonacciResults[num]
-secondLenghtTime = time.time() - start_time 
-print("---it took %f seconds to execute the formula---" % (firstLenghtTime))
-print("---it took %f seconds to execute with the cache---" % (secondLenghtTime))
+# print(result[0])
+# print("---it took %f seconds to execute with the cache---" % (result[1])) 
+
