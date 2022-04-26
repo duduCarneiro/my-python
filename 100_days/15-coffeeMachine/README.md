@@ -3,7 +3,7 @@ Usage and examples How It Works
 
 
 <p align="center">
-  <img src="./img/example.png" alt="Size Limit CLI" width="738">
+  <img src="./img/layout.jpg" alt="Size Limit CLI" width="738">
 </p>
 
 
