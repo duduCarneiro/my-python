@@ -4,31 +4,7 @@ from money_machine import MoneyMachine
 
 
 
-MENU = {
-    "espresso": {
-        "ingredients": {
-            "water": 50,
-            "coffee": 18,
-        },
-        "cost": 1.5,
-    },
-    "latte": {
-        "ingredients": {
-            "water": 200,
-            "milk": 150,
-            "coffee": 24,
-        },
-        "cost": 2.5,
-    },
-    "cappuccino": {
-        "ingredients": {
-            "water": 250,
-            "milk": 100,
-            "coffee": 24,
-        },
-        "cost": 3.0,
-    }
-}
+new_menu = Menu()
 
 resources = {
     "water": 300,
@@ -68,19 +44,24 @@ def counting_coins(money_inserted, drink_cost):
     successful = True
     return successful
 
+
+
+
+
+
 while True:
-    user_answer = input('What would you like? (espresso/latte/cappuccino):\n')
+    user_answer = input(f'What would you like? {new_menu.get_items}:\n')
     if user_answer == 'off':
         break
     if user_answer == 'report':
         print(f"Water: {resources['water']}ml\nMilk: {resources['milk']}ml\nCoffee: {resources['coffee']}g\nMoney: ${acumulated_money}")
         continue
-    
-    first_verification = enough_resources(MENU[user_answer]['ingredients'])
+    new_choice = new_menu.find_drink(user_answer)
+    first_verification = enough_resources(new_choice.ingredients)
     if first_verification:
-        second_verification = counting_coins(process_coins(), MENU[user_answer]['cost'])
+        second_verification = counting_coins(process_coins(), new_choice.cost)
 
     if first_verification and second_verification:
-        for ingredient in MENU[user_answer]['ingredients']:
-            resources[ingredient] -= MENU[user_answer]['ingredients'][ingredient]
+        for ingredient in new_choice.ingredients:
+            resources[ingredient] -= new_choice.ingredients[ingredient]
         print(f'Here is your {user_answer}. Enjoy!')
