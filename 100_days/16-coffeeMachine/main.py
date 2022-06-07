@@ -48,9 +48,8 @@ def counting_coins(money_inserted, drink_cost):
 
 
 
-
 while True:
-    user_answer = input(f'What would you like? {new_menu.get_items}:\n')
+    user_answer = input(f'What would you like? {new_menu.get_items()}:\n')
     if user_answer == 'off':
         break
     if user_answer == 'report':
