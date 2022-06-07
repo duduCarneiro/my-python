@@ -1,4 +1,6 @@
 # from tkinter import Menu
+from prettytable import PrettyTable
+
 
 MENU = {
     "espresso": {
